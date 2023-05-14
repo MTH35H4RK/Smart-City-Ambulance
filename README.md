@@ -1,2 +1,2 @@
 # Smart City Ambulance
-This repository is fo ra smart city ambulance prototype.
+This repository is for a smart city ambulance prototype.
