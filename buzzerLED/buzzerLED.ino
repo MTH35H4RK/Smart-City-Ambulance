@@ -1,8 +1,8 @@
 int buzzerPin = 8;
 int redLedPin = 9;
 int blueLedPin = 10;
-
 int sirenState = 0;
+
 unsigned long lastSirenChangeTime = 0;
 
 void setup() {
