@@ -3,7 +3,7 @@
 const char* ssid = "TP-Link_0C74";                  // Your wifi Name
 const char* password = "79054768"; // Your wifi Password
 
-const char * host = "192.168.0.100";        // IP Server
+const char * host = "192.168.0.101";        // IP Server
 
 const int httpPort = 5000;
 
@@ -83,15 +83,15 @@ void loop() {
     CHECK = send_commands();
     //    delay(800);
 
-    Commands = "ACCIDENT/XXXXX";
+    Commands = "/ACCIDENT/XXXXX";
     ACCIDENT = send_commands();
     //    delay(800);
 
-    Commands = "HOSPITAL/XXXXX";
+    Commands = "/HOSPITAL/XXXXX";
     HOSPITAL = send_commands();
     //    delay(800);
 
-    Commands = "LIGHT/XXXXX";
+    Commands = "/LIGHT/XXXXX";
     LIGHT = send_commands();
     //    delay(700);
     if (LIGHT == "RED") {
@@ -99,7 +99,7 @@ void loop() {
       LIGHT = send_commands();
     }
 
-    Commands = "TRAFFIC/XXXXX";
+    Commands = "/TRAFFIC/XXXXX";
     TRAFFIC = send_commands();
     delay(500);
     Serial.print(ACCIDENT);
