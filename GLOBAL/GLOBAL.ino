@@ -453,10 +453,10 @@ void A2_H1_V12 () {
     right(); //FOLLOWING LINE
   }
   if (LED >= 2) {
-    while (m == 0) {
-      for (int pos = 0; pos <= 165; pos += 1) {
-        turn(200, 150);
-        delay(3);
+    if (m == 0) {
+      unsigned long prev = millis();
+      while (millis() - prev < 1000) {
+        left();
       }
       m = 1;
     }
@@ -504,8 +504,10 @@ void A2_H2_V22 () {
   }
   if (LED == 2) {
     if (m == 0) {
-      turn(100, 255);
-      delay(600);
+      unsigned long prev = millis();
+      while (millis() - prev < 1000) {
+        right();
+      }
       m = 1;
     }
 
@@ -569,18 +571,18 @@ void A1_H2_V22 () {
       while (LDRValue > 30) {
         LDRValue = analogRead(LDR_Pin);
         right();
-
       }
       forward(0);
       delay(2500);
       LED++;
     }
     if (m == 0) {
-      turn(100, 255);
-      delay(600);
+      unsigned long prev = millis();
+      while (millis() - prev < 1000) {
+        right();
+      }
       m = 1;
     }
-
     else V22();
 
 

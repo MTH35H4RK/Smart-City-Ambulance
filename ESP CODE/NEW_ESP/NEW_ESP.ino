@@ -3,7 +3,7 @@
 const char* ssid = "TP-Link_0C74";                  // Your wifi Name
 const char* password = "79054768"; // Your wifi Password
 
-const char * host = "192.168.0.101";        // IP Server
+const char * host = "192.168.0.102";        // IP Server
 
 const int httpPort = 5000;
 
@@ -95,7 +95,7 @@ void loop() {
     LIGHT = send_commands();
     //    delay(700);
     if (LIGHT == "RED") {
-      Commands = "GREEN/XXXXX";
+      Commands = "/GREEN/XXXXX";
       LIGHT = send_commands();
     }
 
