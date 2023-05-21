@@ -31,17 +31,13 @@ String getResponse() {
 String getr() {
   while (response != "A1_H1_V11" && response != "A1_H1_V12" && response != "A2_H1_V11" && response != "A2_H1_V12" && response != "A2_H2_V21" && response !=  "A2_H2_V22" && response != "A1_H2_V21" && response != "A1_H2_V22") {
     response = getResponse();
-        delay(400);
-        Serial.print("getting the response:");
-        Serial.print(response);
-        Serial.println(",");
+    Serial.print("getting the response:");
+    Serial.print(response);
+    Serial.println(",");
   }
   return response;
 }
-void sendCommand(String command) {
-  Serial.println("Sending command: " + command);
-  Serial.println(command);
-}
+
 void setup() {
 
   // initialize serial:
@@ -363,13 +359,13 @@ void A1_H1_V11() {
     }
     forward(0); //STOPS FOR 2500 ms
     LED++;
-    if(LED==2){
-      sendCommand("PSPS");
-      }
+    if (LED == 2) {
+      Serial.write('6');
+    }
     delay(2500);
-    
   }
   left();
+
 }
 void A1_H1_V12 () {
 
@@ -382,8 +378,12 @@ void A1_H1_V12 () {
         left();
       }
       forward(0);
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
   }
   if (LED >= 2) {
@@ -393,8 +393,12 @@ void A1_H1_V12 () {
         forward(200);
       }
       forward(0);
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
   }
 
@@ -422,8 +426,12 @@ void A2_H1_V11 () {
         right();
       }
       forward(0); //STOPS FOR 2500 ms
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
 
 
@@ -453,8 +461,12 @@ void A2_H1_V12 () {
         right();
       }
       forward(0); //STOPS FOR 2500 ms
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
 
 
@@ -493,6 +505,10 @@ void A2_H2_V21() {
       forward(255);
     }
     forward(0); //STOPS FOR 2500 ms
+    LED++;
+    if (LED == 2) {
+      Serial.write('6');
+    }
     delay(2500);
   }
   right(); //FOLLOWING LINE
@@ -507,8 +523,12 @@ void A2_H2_V22 () {
 
     }
     forward(0);
-    delay(2500);
     LED++;
+    if (LED == 2) {
+      Serial.write('6');
+    }
+    delay(2500);
+
   }
   if (LED == 2) {
     if (m == 0) {
@@ -536,8 +556,12 @@ void A1_H2_V21 () {
         left();
       }
       forward(0); //STOPS FOR 2500 ms
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
     left();
   }
@@ -567,8 +591,12 @@ void A1_H2_V22 () {
         left();
       }
       forward(0); //STOPS FOR 2500 ms
-      delay(2500);
       LED++;
+      if (LED == 2) {
+        Serial.write('6');
+      }
+      delay(2500);
+
     }
 
 
@@ -596,44 +624,33 @@ void A1_H2_V22 () {
 
   }
 }
+
+
 void loop() {
 
   while (response == "A1_H1_V11") {
-    Serial.println("0");
     A1_H1_V11();
-
   }
   while (response == "A1_H1_V12") {
-    Serial.println("1");
     A1_H1_V12();
   }
   while (response == "A2_H1_V11") {
     A2_H1_V11();
-    Serial.println("2");
-
   }
   while (response == "A2_H1_V12") {
     A2_H1_V12();
-Serial.println("3");
   }
 
   while (response == "A2_H2_V21") {
     A2_H2_V21();
-    Serial.println("4");
-
   }
   while (response == "A2_H2_V22") {
     A2_H2_V22();
-    Serial.println("5");
-
   }
   while (response == "A1_H2_V21") {
     A1_H2_V21();
-    Serial.println("6");
-
   }
   while (response == "A1_H2_V22") {
     A1_H2_V22();
-Serial.println("7");
   }
 }

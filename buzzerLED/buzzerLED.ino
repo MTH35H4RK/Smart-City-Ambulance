@@ -1,6 +1,6 @@
-int buzzerPin = 8;
-int redLedPin = 9;
-int blueLedPin = 10;
+int buzzerPin = 2;
+int redLedPin = 11;
+int blueLedPin = 13;
 int sirenState = 0;
 
 unsigned long lastSirenChangeTime = 0;
@@ -21,11 +21,11 @@ void loop() {
     
     // Play tone based on siren state
     if (sirenState == 1) {
-      tone(buzzerPin, 880);
+      tone(buzzerPin, 1450);
       digitalWrite(redLedPin, HIGH);
       digitalWrite(blueLedPin, LOW);
     } else {
-      tone(buzzerPin, 660);
+      tone(buzzerPin, 550);
       digitalWrite(redLedPin, LOW);
       digitalWrite(blueLedPin, HIGH);
     }

@@ -31,17 +31,13 @@ String getResponse() {
 String getr() {
   while (response != "A1_H1_V11" && response != "A1_H1_V12" && response != "A2_H1_V11" && response != "A2_H1_V12" && response != "A2_H2_V21" && response !=  "A2_H2_V22" && response != "A1_H2_V21" && response != "A1_H2_V22") {
     response = getResponse();
-        delay(400);
-        Serial.print("getting the response:");
-        Serial.print(response);
-        Serial.println(",");
+    Serial.print("getting the response:");
+    Serial.print(response);
+    Serial.println(",");
   }
   return response;
 }
-void sendCommand(String command) {
-  Serial.println("Sending command: " + command);
-  Serial.println(command);
-}
+
 void setup() {
 
   // initialize serial:
@@ -362,14 +358,10 @@ void A1_H1_V11() {
       left();
     }
     forward(0); //STOPS FOR 2500 ms
-    LED++;
-    if(LED==2){
-      sendCommand("PSPS");
-      }
     delay(2500);
-    
   }
   left();
+
 }
 void A1_H1_V12 () {
 
@@ -596,44 +588,64 @@ void A1_H2_V22 () {
 
   }
 }
+
+
 void loop() {
 
   while (response == "A1_H1_V11") {
-    Serial.println("0");
     A1_H1_V11();
+    if (LED == 1) {
+      Serial.write('6');
+    }
 
   }
   while (response == "A1_H1_V12") {
-    Serial.println("1");
     A1_H1_V12();
+    if (LED == 1) {
+      Serial.write('6');
+    }
   }
   while (response == "A2_H1_V11") {
     A2_H1_V11();
-    Serial.println("2");
+    if (LED == 1) {
+      Serial.write('6');
+    }
+
 
   }
   while (response == "A2_H1_V12") {
     A2_H1_V12();
-Serial.println("3");
+    if (LED == 1) {
+      Serial.write('6');
+    }
+
   }
 
   while (response == "A2_H2_V21") {
     A2_H2_V21();
-    Serial.println("4");
+    if (LED == 1) {
+      Serial.write('6');
+    }
 
   }
   while (response == "A2_H2_V22") {
     A2_H2_V22();
-    Serial.println("5");
+    if (LED == 1) {
+      Serial.write('6');
+    }
 
   }
   while (response == "A1_H2_V21") {
     A1_H2_V21();
-    Serial.println("6");
+    if (LED == 1) {
+      Serial.write('6');
+    }
 
   }
   while (response == "A1_H2_V22") {
     A1_H2_V22();
-Serial.println("7");
+    if (LED == 1) {
+      Serial.write('6');
+    }
   }
 }

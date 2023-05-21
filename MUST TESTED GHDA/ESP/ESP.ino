@@ -83,15 +83,15 @@ void loop() {
   if (T == 0) {
     Commands = "/CHECK/XXXXX";
     CHECK = send_commands();
-    //    delay(800);
+
 
     Commands = "/ACCIDENT/XXXXX";
     ACCIDENT = send_commands();
-    //    delay(800);
+
 
     Commands = "/HOSPITAL/XXXXX";
     HOSPITAL = send_commands();
-    //    delay(800);
+
 
 
     Commands = "/TRAFFIC/XXXXX";
@@ -108,17 +108,13 @@ void loop() {
     if (Serial.available() > 0) {                // Check if there is data from the Arduino
       command = Serial.read();    // Read the command from Arduino
       if (command == '6') {
-        delay(3000);
-
         Commands = "/LIGHT/XXXXX";
         LIGHT = send_commands();
-        //    delay(700);
         if (LIGHT == "RED") {
           Commands = "/GREEN/XXXXX";
           LIGHT = send_commands();
         }
         Z = 1;
-
       }
     }
   }
